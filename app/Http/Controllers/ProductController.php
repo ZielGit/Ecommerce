@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -39,6 +40,12 @@ class ProductController extends Controller
             'description' => $request->description,
             'price' => $request->price
         ];
+        if (Product::create($options)) {
+            return redirect('/');
+        } else {
+            return redirect('products.create');
+        }
+        
     }
 
     /**
