@@ -14,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('product.index', ['products'=>$products]);
     }
 
     /**
@@ -42,7 +43,7 @@ class ProductController extends Controller
             'price' => $request->price
         ];
         if (Product::create($options)) {
-            return redirect('/');
+            return redirect('/productos');
         } else {
             return redirect('products.create');
         }
@@ -81,7 +82,17 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+
+        $product->title = $request->title;
+        $product->price = $request->price;
+        $product->description = $request->description;
+
+        if($product->save()){
+            return redirect('/');
+        }else{
+            return view('product.edit', ['product'=>$product]);
+        }
     }
 
     /**
