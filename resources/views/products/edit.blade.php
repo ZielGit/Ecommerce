@@ -4,7 +4,8 @@
 <div class="container">
     <div class="card">
         <header>
-            <h4>Crear nuevo producto</h4>
+            <h4>Editar productos</h4>
+            <p>{{$product->title}}</p>
         </header>
 
         <div class="card-body">
@@ -12,4 +13,3 @@
         </div>
     </div>
 </div>
-@endsection
