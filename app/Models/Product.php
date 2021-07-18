@@ -14,7 +14,7 @@ class Product extends Model
     ];
 
     public function url(){
-        return $this->id ? 'product.update' : 'productos.store';
+        return $this->id ? 'productos.update' : 'productos.store';
     }
 
     public function method(){

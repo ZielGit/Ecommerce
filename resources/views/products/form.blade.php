@@ -1,4 +1,4 @@
-{!! Form::open(['url' => [$product->url(), $product->id],'method' => $product->method(),'class' => 'app-form']) !!}
+{!! Form::open(['route' => [$product->url(), $product->id],'method' => $product->method(),'class' => 'app-form']) !!}
 <div>
     {!! Form::label('title','Título del producto') !!}
     {!! Form::text('title',$product->title,['class' => 'form-control']) !!}

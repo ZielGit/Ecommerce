@@ -14,8 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('product.index', ['products'=>$products]);
+        $products = Product::paginate();
+        return view('products.index', ['products'=>$products]);
     }
 
     /**
@@ -91,7 +91,7 @@ class ProductController extends Controller
         if($product->save()){
             return redirect('/');
         }else{
-            return view('product.edit', ['product'=>$product]);
+            return view('products.edit', ['product'=>$product]);
         }
     }
 
