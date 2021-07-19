@@ -1930,16 +1930,22 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      products: [{
-        title: 'curso',
-        price: 200,
-        description: 'Hola mundo'
-      }, {
-        title: 'curso',
-        price: 200,
-        description: 'Hola mundo'
-      }]
+      products: [],
+      endpoint: "/productos"
     };
+  },
+  created: function created() {
+    this.fetchProducts();
+  },
+  methods: {
+    fetchProducts: function fetchProducts() {
+      var _this = this;
+
+      axios.get(this.endpoint).then(function (response) {
+        console.log(response.data.data);
+        _this.products = response.data.data;
+      });
+    }
   }
 });
 
@@ -37701,7 +37707,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("h4", { staticClass: "card-subtitle" }, [
-          _vm._v(_vm._s(_vm.product.price))
+          _vm._v(_vm._s(_vm.product.humanPrice))
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "card-text" }, [
@@ -37739,7 +37745,10 @@ var render = function() {
       "div",
       { staticClass: "row" },
       _vm._l(_vm.products, function(product) {
-        return _c("product-card-component", { attrs: { product: product } })
+        return _c("product-card-component", {
+          key: product.id,
+          attrs: { product: product }
+        })
       }),
       1
     )

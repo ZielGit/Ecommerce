@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="row">
-            <product-card-component v-bind:product="product" v-for="product in products"></product-card-component>
+            <product-card-component v-bind:key="product.id" v-bind:product="product" v-for="product in products"></product-card-component>
         </div>
     </section>
 </template>
@@ -12,10 +12,19 @@ import ProductCardComponent from './ProductCardComponent.vue'
   components: { ProductCardComponent },
         data(){
             return {
-                products: [
-                    {title: 'curso', price: 200, description: 'Hola mundo'},
-                    {title: 'curso', price: 200, description: 'Hola mundo'}
-                ]
+                products: [],
+                endpoint: "/productos"
+            }
+        },
+        created(){
+            this.fetchProducts();
+        },
+        methods: {
+            fetchProducts(){
+                axios.get(this.endpoint).then((response)=>{
+                    console.log(response.data.data);
+                    this.products = response.data.data;
+                });
             }
         }
     }
