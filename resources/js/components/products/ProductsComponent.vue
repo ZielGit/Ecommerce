@@ -1,8 +1,8 @@
 <template>
     <section>
-        <div class="row">
+        <transition-group tag="div" :css="false" name="fadeIn" @before-enter="beforeEnter" @enter="enter" @leave="leave" class="row">
             <product-card-component v-bind:key="product.id" v-bind:product="product" v-for="product in products"></product-card-component>
-        </div>
+        </transition-group>
     </section>
 </template>
 
@@ -25,6 +25,21 @@ import ProductCardComponent from './ProductCardComponent.vue'
                     console.log(response.data.data);
                     this.products = response.data.data;
                 });
+            },
+            beforeEnter(el){
+                el.style.opacity = 0;
+                el.style.transform = "scale(0)";
+                el.style.transition = "all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1)"
+            },
+            enter(el){
+                setTimeout(()=>{
+                    el.style.opacity = 1;
+                    el.style.transform = "scale(1)";
+                },200)
+            },
+            leave(el){
+                el.style.opacity = 0;
+                el.style.transform = "scale(0)";
             }
         }
     }
