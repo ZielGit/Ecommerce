@@ -25,6 +25,8 @@ Vue.component('products-component', require('./components/products/ProductsCompo
 
 Vue.component('product-card-component', require('./components/products/ProductCardComponent.vue').default);
 
+Vue.component('material-transition-group', require('./components/animations/MaterialCollectionComponent.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
