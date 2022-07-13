@@ -12,11 +12,7 @@
                 <h4 class="card-subtitle">{{$product->price}}</h4>
                 <p class="card-text">{{$product->description}}</p>
                 <div class="card-actions">
-                    <form action="/in_shopping_carts" method="post">
-                        @csrf
-                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <input type="submit" class="btn btn-success" value="Agregar al carrito">
-                    </form>
+                    <add-product-btn :product='{!! json_encode($product) !!}'></add-product-btn>
                     @include('products.delete')
                 </div>
             </div>

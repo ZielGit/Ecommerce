@@ -20,7 +20,7 @@ class ShoppingCart extends Model
 
     public function products()
     {
-        return $this->belongsTo('App\Product', 'product_in_shopping_carts');
+        return $this->belongsTo('App\Models\Product', 'product_in_shopping_carts');
     }
 
     public function productsCount()
