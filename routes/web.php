@@ -26,6 +26,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/carrito', [ShoppingCartController::class, 'show'])->name('shopping_cart.show');
+Route::get('/carrito/productos', [ShoppingCartController::class, 'products'])->name('shopping_cart.products');
 
 Route::resource('productos', ProductController::class);
 
