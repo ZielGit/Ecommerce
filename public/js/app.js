@@ -2352,7 +2352,11 @@ var render = function render() {
     staticClass: "card-body"
   }, [_c("h2", {
     staticClass: "card-title"
-  }, [_vm._v(_vm._s(_vm.product.title))]), _vm._v(" "), _c("h4", {
+  }, [_c("a", {
+    attrs: {
+      href: "/productos/" + _vm.product.id
+    }
+  }, [_vm._v("\n                    " + _vm._s(_vm.product.title) + "\n                ")])]), _vm._v(" "), _c("h4", {
     staticClass: "card-subtitle"
   }, [_vm._v(_vm._s(_vm.product.humanPrice))]), _vm._v(" "), _c("p", {
     staticClass: "card-text"
@@ -2451,7 +2455,7 @@ var Vuex = (__webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
 window.store = new Vuex.Store({
   state: {
-    productsCount: 2
+    productsCount: 0
   },
   mutations: {
     increment: function increment(state) {

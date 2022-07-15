@@ -12,7 +12,7 @@ const Vuex = require('vuex').default;
 
 window.store = new Vuex.Store({
     state: {
-        productsCount: 2
+        productsCount: 0
     }, 
     mutations: {
         increment(state){
